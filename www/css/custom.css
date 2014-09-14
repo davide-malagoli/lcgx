@@ -1,0 +1,16 @@
+#eventi div.grid{
+    display:none;
+    width:100%
+}
+
+#eventi div.grid.show{
+    display:table;
+    width:100%
+}
+
+#eventi form{
+    display:none;
+}
+#eventi form.show{
+    display:table;
+}
