@@ -6,9 +6,8 @@
     "projectDirectories": {},
     "currentService": {
       "methodapi": "Info",
-      "endPoint": "Google-Play-Services",
-      "service": "AdMob",
-      "category": "Advertising"
+      "endPoint": "AdMob",
+      "service": "AdMob"
     }
   }
 }

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html><head>
+<!--title>AppFramework leafletJS</title-->
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta http-equiv="Pragma" content="no-cache">
+
+<link href="css/icons.css" rel="stylesheet" type="text/css">
+<link href="css/af.ui.css" rel="stylesheet" type="text/css">
+
+<!--link rel="stylesheet" type="text/css" href="http://cdn.app-framework-software.intel.com/2.0/af.ui.css" />
+    <link rel="stylesheet" type="text/css" href="http://cdn.app-framework-software.intel.com/2.0/icons.css" /-->
+<script type="text/javascript" charset="utf-8" src="intelxdk.js"></script>
+<script type="text/javascript" language="javascript">
+    var isIntel=window.intel&&window.intel.xdk
+    // This event handler is fired once the intel libraries are ready
+    function onDeviceReady() {
+        //hide splash screen now that our app is ready to run
+        intel.xdk.device.hideSplashScreen();
+        setTimeout(function () {
+            $.ui.launch();
+        }, 50);
+    }
+    //initial event handler to detect when intel is ready to roll
+    document.addEventListener("intel.xdk.device.ready", onDeviceReady, false);
+</script>
+<script src="js/appframework.ui.min.js"></script>
+<!--script type="text/javascript" charset="utf-8" src="http://cdn.app-framework-software.intel.com/2.0/appframework.ui.min.js"></script-->
+<script>
+    if(isIntel)
+        $.ui.autoLaunch = false;
+    $.ui.useOSThemes = true; //Change this to false to force a device theme
+    $.ui.blockPageScroll();
+    $(document).ready(function () {
+        if ($.ui.useOSThemes && (!$.os.ios||$.os.ios7))
+            $("#afui").removeClass("ios");
+        
+    });
+    $.ui.showBackButton=false;
+    $.ui.animateHeaders = false;
+    $.ui.ready(function(){
+        console.log('go');
+        //main();
+        console.log('exit');
+    });
+</script>
+
+<link href="css/leaflet.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="js/gh-directory.js"></script>
+<script type="text/javascript" src="js/leaflet.js"></script>
+<script type="text/javascript" src="js/runtime.js"></script>
+<script type="text/javascript" src="js/classes.js"></script>
+
+<script>
+    $.ui.ready(function(){
+        main();
+        $.ui.loadContent("dettagli",false, false, "slide");
+    });
+</script>
+<style>
+    body {font-family:arial;background-color:white}
+        #body {height:400px;margin:0 -10px}
+</style>
+</head>
+<body>
+<!--div id="afui">
+    <div id="content" style=""-->
+<div id="afui" class="ios">
+    <div id="header" class="header"></div>
+    <div id="content" style="">
+
+        <!--div class="panel" title="LeafletJS" id="page1"  data-footer="none" selected="true"-->
+        <div class="panel" title="Mappa" id="mappa" data-appbuilder-object="page" data-footer="none"
+        style="">
+            <div id="body"></div>
+
+
+
+        </div>
+        <div class="panel" title="Dettagli" id="dettagli" data-appbuilder-object="page"
+        style="">
+            <div class="container" style="width:100%" data-appbuilder-object="container">
+                <div class="text_item" data-appbuilder-object="text">Titolo</div>
+            </div>
+            <div class="container" style="width:100%" data-appbuilder-object="container"><a class="button" href="#mappa" style="width: 100%; position: relative; z-index: 2;"
+                data-appbuilder-object="button" id="">Percorso su Mappa</a>
+            </div>
+            <div class="container" style="width:100%" data-appbuilder-object="container">
+                <div class="text_item" data-appbuilder-object="text">Corpo</div>
+            </div>
+        </div>
+    </div>
+    <div id="navbar" class="footer">
+        <footer id="defaultFooter"><a class="icon home">Home</a>
+        </footer>
+    </div>
+</div>
+</body>
+
+
+
+
+
+</html>
