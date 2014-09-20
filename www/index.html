@@ -1,282 +1,52 @@
 <!DOCTYPE html>
-<html><!--HTML5 doctype-->
-
+<html>
 <head>
-<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta http-equiv="Pragma" content="no-cache">
-<script type="text/javascript" charset="utf-8" src="intelxdk.js"></script>
-<script type="text/javascript" language="javascript">
-    var isIntel=window.intel&&window.intel.xdk
-    // This event handler is fired once the intel libraries are ready
-    function onDeviceReady() {
-        //hide splash screen now that our app is ready to run
-        intel.xdk.device.hideSplashScreen();
-        setTimeout(function () {
-            $.ui.launch();
-        }, 50);
-    }
-    //initial event handler to detect when intel is ready to roll
-    document.addEventListener("intel.xdk.device.ready", onDeviceReady, false);
-</script>
-<script src="js/appframework.ui.min.js"></script>
+    <title>AppFramework leafletJS</title>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0;" />
 
+    <link rel="stylesheet" type="text/css" href="http://cdn.app-framework-software.intel.com/2.0/af.ui.css" />
+    <link rel="stylesheet" type="text/css" href="http://cdn.app-framework-software.intel.com/2.0/icons.css" />
+    <script type="text/javascript" charset="utf-8" src="http://cdn.app-framework-software.intel.com/2.0/appframework.ui.min.js"></script>    
+    
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css" />
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js?2"></script>
 
-<script>
-    if(isIntel)
-        $.ui.autoLaunch = false;
-    $.ui.useOSThemes = true; //Change this to false to force a device theme
-    $.ui.blockPageScroll();
-    $(document).ready(function () {
-        if ($.ui.useOSThemes && (!$.os.ios||$.os.ios7))
-            $("#afui").removeClass("ios");
-        
-    });
-    $.ui.showBackButton=false;
-    $.ui.animateHeaders = false;
-    $.ui.ready(function(){
-        console.log('go');
-        //main();
-        console.log('exit');
-    });
-</script>
+    <script>
+$.ui.ready(function(){
+    leaflet();
+});      
+      
+function leaflet(){
+    // create a map in the "map" div, set the view to a given place and zoom
+    var map = L.map('map').setView([51.505, -0.09], 13);
+    
+    // add an OpenStreetMap tile layer
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    
+    // add a marker in the given location, attach some popup content to it and open the popup
+    L.marker([51.5, -0.09]).addTo(map)
+        .bindPopup('A pretty CSS3 popup. <br> Easily customizable.')
+        .openPopup();    
+}
 
-<!--script>
-    $.ui.ready(function(){
-        main();
-    });
-</script-->
-<link href="css/icons.css" rel="stylesheet" type="text/css">
-<link href="css/af.ui.css" rel="stylesheet" type="text/css">
-<link href="css/custom.css" rel="stylesheet" type="text/css">
-<link href="css/leaflet.css" rel="stylesheet" type="text/css">
-
-<script type="text/javascript" src="js/gh-directory.js"></script>
-<script type="text/javascript" src="js/leaflet-src.js"></script>
-<script type="text/javascript" src="js/runtime.js"></script>
-<script type="text/javascript" src="js/classes.js"></script>
+    </script>
+    <style>
+        body {font-family:arial;background-color:white}
+        #map {height:400px;margin:0 -10px}
+    </style>    
 </head>
-<body>
-<div id="afui" class="ios">
-    <div id="header" class="header"></div>
+<body> 
+<div id="afui">
     <div id="content" style="">
-        <div class="panel" title="Lucca Explorer" id="main" selected="selected" style=""
-        data-appbuilder-object="page" data-footer="none">
-
-            <ul class="list inset" data-appbuilder-object="list" style="">
-                <li><a href="#padiglioni">Paglioni</a>
-                </li>
-                <li><a href="#eventi">Eventi</a>
-                </li>
-                <li><a href="#amici">Amici</a>
-                </li>
-                <li><a href="#settings">Impostazioni</a>
-                </li>
-            </ul>
+        <div class="panel" title="LeafletJS" id="page1"  data-footer="none" selected="true">
+            <div id="map"></div>
+            
+            
+            
         </div>
-        <div class="panel" title="Eventi" id="eventi" data-appbuilder-object="page" style=""
-        data-footer="footer_3" data-header="header_3">
-
-
-            <div class="grid" data-appbuilder-object="grid3" style="">
-                <div class="container col3" data-appbuilder-object="container" style="display: table-cell; width: 33%;"><a class="button" href="#eventi_data" style="width: 100%; position: relative; z-index: 2;"
-                    data-appbuilder-object="button" data-transition="flip" id="date">Data</a>
-                </div>
-                <div class="container col3" data-appbuilder-object="container" style="display: table-cell; width: 33%;"><a class="button" href="#eventi_luogo" style="width: 100%; position: relative; z-index: 2;"
-                    data-appbuilder-object="button" data-transition="pop" id="location">Luogo</a>
-                </div>
-                <div class="container col3" data-appbuilder-object="container" style="display: table-cell; width: 33%;">
-                    <a href="#" class="button" style="width: 100%;" data-appbuilder-object="button"
-                    onclick="$('form').toggleClass('show');$('div.grid').toggleClass('show')"
-                    id="name">Nome</a>
-                </div>
-            </div>
-
-
-            <form style="width: 100%; min-height: 50px; position: relative;" data-appbuilder-object="form"
-            class="">
-                <div class="input_element form_element" style="width: 66%; overflow: hidden; display: table-cell;"
-                data-appbuilder-object="input">
-                    <label for="nome_evento" style="display:none"></label>
-                    <input type="text" style="float:none;width:100%" id="nome_evento" placeholder="Nome Evento">
-                </div>
-                <div class="form_element" style="width: 33%;display: table-cell;">
-                    <a href="#" class="button" data-appbuilder-object="button" style="width: 100%; vertical-align: middle;"
-                    id="">Cerca
-                    </a>
-                </div>
-            </form>
-            <ul class="list inset" data-appbuilder-object="list" style="">
-                <li><a href="#dettagli">Item 1</a>
-                </li>
-                <li><a href="#dettagli">Item 2</a>
-                </li>
-            </ul>
-
-
-
-        </div>
-        <div class="panel" title="Padiglioni" data-footer="footer_3" id="padiglioni" data-appbuilder-object="page"
-        style="">
-            <ul class="list inset" data-appbuilder-object="list">
-                <li><a href="#">Item 1</a>
-                </li>
-                <li><a href="#">Item 2</a>
-                </li>
-            </ul>
-        </div>
-        <div class="panel" title="Impostazioni" data-footer="footer_3" id="settings" data-appbuilder-object="page"
-        style=""></div>
-        <div class="panel" title="Amici" data-footer="footer_3" id="amici" data-appbuilder-object="page"
-        style=""></div>
-        <div class="panel" title="Scegli data" id="eventi_data" data-appbuilder-object="page"
-        style="" data-footer="footer_2" data-header="header_1">
-            <div class="container" style="width:100%" data-appbuilder-object="container">
-                <div class="toggle_element form_element" style="overflow: hidden;" data-appbuilder-object="toggle">
-                    <label>Giovedì 30 Ottobre</label>
-                    <input type="checkbox" id="30102014" class="toggle">
-                    <label for="30102014" data-on="On" data-off="Off"><span></span>
-                    </label>
-                </div>
-            </div>
-            <div class="container" style="width:100%" data-appbuilder-object="container">
-                <div class="toggle_element form_element" style="overflow: hidden;" data-appbuilder-object="toggle">
-                    <label>Venerdì 31 Ottobre</label>
-                    <input type="checkbox" id="31102014" class="toggle">
-                    <label for="31102014" data-on="On" data-off="Off"><span></span>
-                    </label>
-                </div>
-            </div>
-            <div class="container" style="width:100%" data-appbuilder-object="container">
-                <div class="toggle_element form_element" style="overflow: hidden;" data-appbuilder-object="toggle">
-                    <label>Sabato 1 Novembre</label>
-                    <input type="checkbox" id="01092014" class="toggle">
-                    <label for="01092014" data-on="On" data-off="Off"><span></span>
-                    </label>
-                </div>
-            </div>
-            <div class="container" style="width:100%" data-appbuilder-object="container">
-                <div class="toggle_element form_element" style="overflow: hidden;" data-appbuilder-object="toggle">
-                    <label>Domenica 2 Novembre</label>
-                    <input type="checkbox" id="02092014" class="toggle">
-                    <label for="02092014" data-on="On" data-off="Off"><span></span>
-                    </label>
-                </div>
-            </div>
-        </div>
-        <div class="panel" title="Scegli Luogo" data-footer="footer_2" id="eventi_luogo"
-        data-appbuilder-object="page" style="" data-header="header_2">
-            <div class="container" style="width:100%" data-appbuilder-object="container">
-                <div class="toggle_element form_element" style="overflow:hidden" data-appbuilder-object="toggle">
-                    <label>Title</label>
-                    <input type="checkbox" id="toggle_40788" class="toggle">
-                    <label for="toggle_40788" data-on="On" data-off="Off"><span></span>
-                    </label>
-                </div>
-            </div>
-            <div class="container" style="width:100%" data-appbuilder-object="container">
-                <div class="toggle_element form_element" style="overflow:hidden" data-appbuilder-object="toggle">
-                    <label>Title</label>
-                    <input type="checkbox" id="toggle_40789" class="toggle">
-                    <label for="toggle_40789" data-on="On" data-off="Off"><span></span>
-                    </label>
-                </div>
-            </div>
-            <div class="container" style="width:100%" data-appbuilder-object="container">
-                <div class="toggle_element form_element" style="overflow:hidden" data-appbuilder-object="toggle">
-                    <label>Title</label>
-                    <input type="checkbox" id="toggle_40790" class="toggle">
-                    <label for="toggle_40790" data-on="On" data-off="Off"><span></span>
-                    </label>
-                </div>
-            </div>
-            <div class="container" style="width:100%" data-appbuilder-object="container">
-                <div class="toggle_element form_element" style="overflow:hidden" data-appbuilder-object="toggle">
-                    <label>Title</label>
-                    <input type="checkbox" id="toggle_40791" class="toggle">
-                    <label for="toggle_40791" data-on="On" data-off="Off"><span></span>
-                    </label>
-                </div>
-            </div>
-            <div class="container" style="width:100%" data-appbuilder-object="container">
-                <div class="toggle_element form_element" style="overflow:hidden" data-appbuilder-object="toggle">
-                    <label>Title</label>
-                    <input type="checkbox" id="toggle_40792" class="toggle">
-                    <label for="toggle_40792" data-on="On" data-off="Off"><span></span>
-                    </label>
-                </div>
-            </div>
-            <div class="container" style="width:100%" data-appbuilder-object="container">
-                <div class="toggle_element form_element" style="overflow:hidden" data-appbuilder-object="toggle">
-                    <label>Title</label>
-                    <input type="checkbox" id="toggle_40793" class="toggle">
-                    <label for="toggle_40793" data-on="On" data-off="Off"><span></span>
-                    </label>
-                </div>
-            </div>
-            <div class="container" style="width:100%" data-appbuilder-object="container">
-                <div class="toggle_element form_element" style="overflow:hidden" data-appbuilder-object="toggle">
-                    <label>Title</label>
-                    <input type="checkbox" id="toggle_40794" class="toggle">
-                    <label for="toggle_40794" data-on="On" data-off="Off"><span></span>
-                    </label>
-                </div>
-            </div>
-        </div>
-        <div class="panel" title="Dettagli" id="dettagli" data-appbuilder-object="page"
-        style="">
-            <div class="container" style="width:100%" data-appbuilder-object="container">
-                <div class="text_item" data-appbuilder-object="text">Titolo</div>
-            </div>
-            <div class="container" style="width:100%" data-appbuilder-object="container"><a class="button" href="mappa.html" style="width: 100%; position: relative; z-index: 2;"
-                data-appbuilder-object="button" data-transition="slide" id="">Percorso su Mappa</a>
-            </div>
-            <div class="container" style="width:100%" data-appbuilder-object="container">
-                <div class="text_item" data-appbuilder-object="text">Corpo</div>
-            </div>
-        </div>
-        <!--div class="panel" title="Mappa" id="mappa" data-appbuilder-object="page" data-footer="none"
-        style="">
-            <div id="body" style="height:600px;width:600px"></div>
-
-        </div-->
     </div>
-    <div id="navbar" class="footer">
-        <footer><a href="#padiglioni" class="icon home" style="">Padiglioni</a><a href="#eventi"
-            class="icon chat" style="">Eventi</a><a href="#cerca" class="icon location"
-            style="">Cerca</a><a href="#amici" class="icon user" style="">Amici</a>
-        </footer>
-    </div>
-
-
-    <footer id="footer_2" data-appbuilder-object="footer"></footer>
-    <footer id="footer_3" data-appbuilder-object="footer"><a href="#padiglioni" class="icon home">Padiglioni</a><a href="#eventi" class="icon chat">Eventi</a>
-        <a href="#amici" class="icon user">Amici</a><a href="#settings" class="icon settings">Impostazioni</a>
-    </footer>
-
-    <header id="header_1" data-appbuilder-object="header">
-        <h1 id="pageTitle" class="">Scegli Data</h1><a id="fatto" href="#eventi" class="button" style="visibility: visible; float:right;"
-        data-transition="flip">Fatto</a>
-    </header>
-    <header id="header_2" data-appbuilder-object="header">
-        <h1 id="pageTitle" class="">Scegli  Luogo</h1><a id="fatto" href="#eventi" class="button" style="visibility: visible; float:right;"
-        data-transition="flip">Fatto</a>
-    </header>
-    <header id="header_2" data-appbuilder-object="header">
-        <h1 id="pageTitle" class="">Scegli  Luogo</h1><a id="fatto" href="#eventi" class="button" style="visibility: visible; float:right;"
-        data-transition="flip">Fatto</a>
-    </header>
-    <header id="header_3" data-appbuilder-object="header">
-        <h1 id="pageTitle" class="">Eventi</h1>
-        <a class="button icon magnifier" style="visibility: visible; float:right;" onclick="$('div.grid').toggleClass('show');$('form').removeClass('show')"
-        data-appbuilder-object="button"></a>
-    </header>
-</div>
+</div>    
 </body>
-
-
-
-
-
 </html>
