@@ -1,52 +1,87 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>AppFramework leafletJS</title>
-    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0;" />
+<html><head>
+<title>AppFramework leafletJS</title>
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0;">
 
-    <link rel="stylesheet" type="text/css" href="http://cdn.app-framework-software.intel.com/2.0/af.ui.css" />
+<!--link rel="stylesheet" type="text/css" href="http://cdn.app-framework-software.intel.com/2.0/af.ui.css" />
     <link rel="stylesheet" type="text/css" href="http://cdn.app-framework-software.intel.com/2.0/icons.css" />
-    <script type="text/javascript" charset="utf-8" src="http://cdn.app-framework-software.intel.com/2.0/appframework.ui.min.js"></script>    
-    
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css" />
-    <script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js?2"></script>
+    <style class="noload" type="text/javascript" charset="utf-8" data-s="http://cdn.app-framework-software.intel.com/2.0/appframework.ui.min.js"></style-->
+<link href="css/af.ui.css" rel="stylesheet" type="text/css">
+<link href="css/icons.css" rel="stylesheet" type="text/css">
 
-    <script>
-$.ui.ready(function(){
-    leaflet();
-});      
-      
-function leaflet(){
-    // create a map in the "map" div, set the view to a given place and zoom
-    var map = L.map('map').setView([51.505, -0.09], 13);
-    
-    // add an OpenStreetMap tile layer
-    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-    
-    // add a marker in the given location, attach some popup content to it and open the popup
-    L.marker([51.5, -0.09]).addTo(map)
-        .bindPopup('A pretty CSS3 popup. <br> Easily customizable.')
-        .openPopup();    
-}
+<script type="text/javascript" charset="utf-8" src="intelxdk.js"></script>
+<script type="text/javascript" language="javascript">
+    var isIntel=window.intel&&window.intel.xdk
+        // This event handler is fired once the intel libraries are ready
+        function onDeviceReady() {
+            //hide splash screen now that our app is ready to run
+            intel.xdk.device.hideSplashScreen();
+            setTimeout(function () {
+                $.ui.launch();
+            }, 50);
+        }
+        //initial event handler to detect when intel is ready to roll
+        document.addEventListener("intel.xdk.device.ready", onDeviceReady, false);
+</script>
+<script src="js/appframework.ui.min.js"></script>
 
-    </script>
-    <style>
-        body {font-family:arial;background-color:white}
+<!--link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css" />
+    <style class="noload" data-s="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js?2"></style-->
+<link href="css/leaflet.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="js/gh-directory.js"></script>
+<script type="text/javascript" src="js/leaflet.js"></script>
+<script type="text/javascript" src="js/runtime.js"></script>
+<script type="text/javascript" src="js/classes.js"></script>
+
+<script>
+    $.ui.ready(function(){
+        leaflet();
+    });      
+          
+    function leaflet(){
+        // create a map in the "map" div, set the view to a given place and zoom
+        var map = L.map('map').setView([43.84, 10.50], 13);
+        
+        // add an OpenStreetMap tile layer
+        L.tileLayer('images/MapQuest/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        
+        // add a marker in the given location, attach some popup content to it and open the popup
+        L.marker([43.84, 10.50]).addTo(map)
+            .bindPopup('A pretty CSS3 popup. <br> Easily customizable.')
+            .openPopup();    
+    }
+</script>
+<style>
+    body {font-family:arial;background-color:white}
         #map {height:400px;margin:0 -10px}
-    </style>    
+</style>
 </head>
-<body> 
-<div id="afui">
+<body>
+<!--div id="afui">
     <div id="content" style="">
-        <div class="panel" title="LeafletJS" id="page1"  data-footer="none" selected="true">
+        <div class="panel" title="LeafletJS" id="page1"  data-footer="none" selected="true"-->
+<div id="afui" class="ios">
+    <div id="header" class="header"></div>
+    <div id="content" style="">
+
+        <!--div class="panel" title="LeafletJS" id="page1"  data-footer="none" selected="true"-->
+        <div class="panel" title="Mappa" id="mappa" data-appbuilder-object="page" data-footer="none"
+        style="">
             <div id="map"></div>
-            
-            
-            
+
+
+
         </div>
     </div>
-</div>    
+    <div id="navbar" class="footer">
+        <footer id="defaultFooter"><a class="icon home">Home</a>
+        </footer>
+    </div>
+</div>
 </body>
+
+
 </html>
