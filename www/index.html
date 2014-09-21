@@ -7,6 +7,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta http-equiv="Pragma" content="no-cache">
 <script type="text/javascript" charset="utf-8" src="intelxdk.js"></script>
+
 <script type="text/javascript" language="javascript">
     var isIntel=window.intel&&window.intel.xdk
     // This event handler is fired once the intel libraries are ready
@@ -34,12 +35,14 @@
     });*/
     $.ui.showBackButton=false;
     $.ui.animateHeaders = false;
-    $.ui.ready(function(){
+    /*$.ui.ready(function(){
         console.log('go');
         //main();
         console.log('exit');
-    });
+    });*/
 </script>
+
+<script type="text/javascript" src="js/geolocation.js"></script>    
 
 <script>
     $.ui.ready(function(){
@@ -47,6 +50,8 @@
             $("#afui").removeClass("ios");
         main();
         $.ui.loadContent("main",false, false, "slide");
+        //initGeo();
+        intel.xdk.geolocation.watchPosition(function(pos){});
         loadEventi();
         loadOspiti();
     });
@@ -63,6 +68,7 @@
 <script type="text/javascript" src="js/fiera-strings.js"></script>
 <script type="text/javascript" src="js/fiera.js"></script>
 <script type="text/javascript" src="js/fiera-lists.js"></script>
+
 <!--style>
     #body{height:600px;width:600px}
 </style-->
