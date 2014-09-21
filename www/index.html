@@ -46,6 +46,9 @@
         if ($.ui.useOSThemes && (!$.os.ios||$.os.ios7))
             $("#afui").removeClass("ios");
         main();
+        $.ui.loadContent("main",false, false, "slide");
+        loadEventi();
+        loadOspiti();
     });
 </script>
 <link href="css/icons.css" rel="stylesheet" type="text/css">
@@ -57,17 +60,19 @@
 <script type="text/javascript" src="js/leaflet.js"></script>
 <script type="text/javascript" src="js/runtime.js"></script>
 <script type="text/javascript" src="js/classes.js"></script>
-    
-<style>
+<script type="text/javascript" src="js/fiera-strings.js"></script>
+<script type="text/javascript" src="js/fiera.js"></script>
+<script type="text/javascript" src="js/fiera-lists.js"></script>
+<!--style>
     #body{height:600px;width:600px}
-</style>
+</style-->
 </head>
 <body>
 <div id="afui" class="ios">
     <div id="header" class="header"></div>
     <div id="content" style="">
-        <div class="panel" title="Lucca Explorer" id="main"  style=""
-        data-appbuilder-object="page" data-footer="none" selected="selected">
+        <div class="panel" title="Lucca Explorer" id="main" style="" data-appbuilder-object="page"
+        data-footer="none">
 
             <ul class="list inset" data-appbuilder-object="list" style="">
                 <li><a href="#padiglioni">Paglioni</a>
@@ -112,12 +117,7 @@
                     </a>
                 </div>
             </form>
-            <ul class="list inset" data-appbuilder-object="list" style="">
-                <li><a href="#dettagli">Item 1</a>
-                </li>
-                <li><a href="#dettagli">Item 2</a>
-                </li>
-            </ul>
+            <ul class="list inset" data-appbuilder-object="list" style=""></ul>
 
 
 
@@ -242,7 +242,7 @@
             </div>
         </div>
         <div class="panel" title="Mappa" id="mappa" data-appbuilder-object="page" data-footer="none"
-        style="" >
+        style="" selected="selected">
             <div id="body" style=""></div>
 
         </div>
