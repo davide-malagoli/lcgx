@@ -8,7 +8,7 @@
       "src": "appStarter",
       "sourceDirectory": "www",
       "projectGuid": "0c926382-8270-484e-b910-447e3ac31ace",
-      "lastModifiedDate": 1409693462645,
+      "lastModifiedDate": 1411248282712,
       "creationDate": 1409693462486
     },
     "XDK-app-starter": "true",
@@ -147,19 +147,7 @@
         "paramvals": {}
       },
       {
-        "id": "intel.xdk.accelerometer",
-        "selectedState": "Auto",
-        "data": {},
-        "paramvals": {}
-      },
-      {
         "id": "intel.xdk.audio",
-        "selectedState": "Auto",
-        "data": {},
-        "paramvals": {}
-      },
-      {
-        "id": "intel.xdk.base",
         "selectedState": "Auto",
         "data": {},
         "paramvals": {}
@@ -189,31 +177,7 @@
         "paramvals": {}
       },
       {
-        "id": "intel.xdk.display",
-        "selectedState": "Auto",
-        "data": {},
-        "paramvals": {}
-      },
-      {
-        "id": "intel.xdk.facebook",
-        "selectedState": "Auto",
-        "data": {},
-        "paramvals": {}
-      },
-      {
         "id": "intel.xdk.file",
-        "selectedState": "Auto",
-        "data": {},
-        "paramvals": {}
-      },
-      {
-        "id": "intel.xdk.geolocation",
-        "selectedState": "Auto",
-        "data": {},
-        "paramvals": {}
-      },
-      {
-        "id": "intel.xdk.notification",
         "selectedState": "Auto",
         "data": {},
         "paramvals": {}
@@ -223,17 +187,54 @@
         "selectedState": "Auto",
         "data": {},
         "paramvals": {}
+      },
+      {
+        "id": "intel.xdk.notification",
+        "selectedState": "Included",
+        "data": {},
+        "paramvals": {}
+      },
+      {
+        "id": "intel.xdk.geolocation",
+        "selectedState": "Included",
+        "data": {},
+        "paramvals": {}
+      },
+      {
+        "id": "intel.xdk.facebook",
+        "selectedState": "Included",
+        "data": {},
+        "paramvals": {}
+      },
+      {
+        "id": "intel.xdk.display",
+        "selectedState": "Included",
+        "data": {},
+        "paramvals": {}
+      },
+      {
+        "id": "intel.xdk.base",
+        "selectedState": "Included",
+        "data": {},
+        "paramvals": {}
+      },
+      {
+        "id": "intel.xdk.accelerometer",
+        "selectedState": "Included",
+        "data": {},
+        "paramvals": {}
       }
     ],
     "serviceMethods": [],
     "buildConfigurations": {
       "Android": {
         "platform_": "android",
+        "runtime_": "Cordova 3.x",
         "name_": "Android",
         "preferences_": {},
         "isActive_": true,
-        "appName_": "prova16",
-        "appID_": "not.yet.specified",
+        "appName_": "luccaExplorer",
+        "appID_": "it.luccaExplorer",
         "appAccess_": "*",
         "icons_": [],
         "splashes_": [],
@@ -243,10 +244,11 @@
         "cordovaCLIVersion_": "3.3",
         "crosswalkVersion_": "stable",
         "appVersion_": "1.0.0",
-        "runtime_": "Cordova 3.x"
+        "appDescription_": ""
       },
       "Android-Crosswalk": {
         "platform_": "android",
+        "runtime_": "Crosswalk with Cordova 3.x",
         "name_": "Android-Crosswalk",
         "preferences_": {},
         "isActive_": true,
@@ -260,11 +262,11 @@
         "excludedLibraries_": "",
         "cordovaCLIVersion_": "3.3",
         "crosswalkVersion_": "stable",
-        "appVersion_": "1.0.0",
-        "runtime_": "Crosswalk with Cordova 3.x"
+        "appVersion_": "1.0.0"
       },
       "iOS": {
         "platform_": "ios",
+        "runtime_": "Cordova 3.x",
         "name_": "iOS",
         "preferences_": {},
         "isActive_": true,
@@ -278,11 +280,11 @@
         "excludedLibraries_": "",
         "cordovaCLIVersion_": "3.3",
         "crosswalkVersion_": "stable",
-        "appVersion_": "1.0.0",
-        "runtime_": "Cordova 3.x"
+        "appVersion_": "1.0.0"
       },
       "Windows8": {
         "platform_": "windows8",
+        "runtime_": "Cordova 3.x",
         "name_": "Windows8",
         "preferences_": {},
         "isActive_": true,
@@ -296,11 +298,11 @@
         "excludedLibraries_": "",
         "cordovaCLIVersion_": "3.3",
         "crosswalkVersion_": "stable",
-        "appVersion_": "1.0.0.0",
-        "runtime_": "Cordova 3.x"
+        "appVersion_": "1.0.0.0"
       },
       "WindowsPhone8": {
         "platform_": "wp8",
+        "runtime_": "Cordova 3.x",
         "name_": "WindowsPhone8",
         "preferences_": {},
         "isActive_": true,
@@ -314,8 +316,7 @@
         "excludedLibraries_": "",
         "cordovaCLIVersion_": "3.3",
         "crosswalkVersion_": "stable",
-        "appVersion_": "1.0.0.0",
-        "runtime_": "Cordova 3.x"
+        "appVersion_": "1.0.0.0"
       }
     }
   }
