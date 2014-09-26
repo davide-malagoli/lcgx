@@ -33,7 +33,7 @@
         
         
     });*/
-    $.ui.showBackButton=false;
+    //$.ui.showBackButton=false;
     $.ui.animateHeaders = false;
     /*$.ui.ready(function(){
         console.log('go');
@@ -42,7 +42,7 @@
     });*/
 </script>
 
-<script type="text/javascript" src="js/geolocation.js"></script>    
+<script type="text/javascript" src="js/geolocation.js"></script>
 
 <script>
     $.ui.ready(function(){
@@ -50,10 +50,11 @@
             $("#afui").removeClass("ios");
         main();
         $.ui.loadContent("main",false, false, "slide");
-        //initGeo();
-        intel.xdk.geolocation.watchPosition(function(pos){});
+        
+        //intel.xdk.geolocation.watchPosition(function(pos){});
         loadEventi();
         loadOspiti();
+        initGeo();
     });
 </script>
 <link href="css/icons.css" rel="stylesheet" type="text/css">
@@ -78,7 +79,7 @@
     <div id="header" class="header"></div>
     <div id="content" style="">
         <div class="panel" title="Lucca Explorer" id="main" style="" data-appbuilder-object="page"
-        data-footer="none">
+        data-footer="footer_2" data-header="header_4">
 
             <ul class="list inset" data-appbuilder-object="list" style="">
                 <li><a href="#padiglioni">Paglioni</a>
@@ -140,7 +141,9 @@
         <div class="panel" title="Impostazioni" data-footer="footer_3" id="settings" data-appbuilder-object="page"
         style=""></div>
         <div class="panel" title="Amici" data-footer="footer_3" id="amici" data-appbuilder-object="page"
-        style=""></div>
+        style="">
+            <div class="text_item" id="pos" data-appbuilder-object="text"></div>
+        </div>
         <div class="panel" title="Scegli data" id="eventi_data" data-appbuilder-object="page"
         style="" data-footer="footer_2" data-header="header_1">
             <div class="container" style="width:100%" data-appbuilder-object="container">
@@ -236,7 +239,7 @@
             </div>
         </div>
         <div class="panel" title="Dettagli" id="dettagli" data-appbuilder-object="page"
-        style="">
+        style="" data-footer="none">
             <div class="container" style="width:100%" data-appbuilder-object="container">
                 <div class="text_item" data-appbuilder-object="text">Titolo</div>
             </div>
@@ -247,17 +250,42 @@
                 <div class="text_item" data-appbuilder-object="text">Corpo</div>
             </div>
         </div>
-        <div class="panel" title="Mappa" id="mappa" data-appbuilder-object="page" data-footer="none"
-        style="" selected="selected">
+        <div class="panel" title="Mappa" id="mappa" data-appbuilder-object="page" data-footer="footer_2"
+        style="" selected="selected" data-header="header_5">
             <div id="body" style=""></div>
 
         </div>
+        <div class="panel" title="Naviga verso" id="naviga" data-appbuilder-object="page"
+        style="" data-footer="none">
+            <div class="container" style="width:100%" data-appbuilder-object="container">
+                <div class="toggle_element form_element" style="overflow: hidden;" data-appbuilder-object="toggle">
+                    <label>Usa mia posizione</label>
+                    <input type="checkbox" id="toggle_77930" class="toggle" checked="checked" onclick="$('#partenza').toggleClass('show');">
+                    <label for="toggle_77930" data-on="On" data-off="Off"><span></span>
+                    </label>
+                </div>
+                <div id="partenza" class="input_element form_element" style="width: 100%; overflow: hidden;"
+                data-appbuilder-object="input">
+                    <label for="">Partenza</label>
+                    <input type="text" style="float:left;" id="" placeholder="">
+                </div>
+
+
+                <div class="input_element form_element" style="width:100%;overflow:hidden" data-appbuilder-object="input">
+                    <label for="">Destinazione</label>
+                    <input type="text" style="float:left;" id="" placeholder="">
+                </div>
+            </div>
+            <ul class="list inset" data-appbuilder-object="list">
+                <li><a href="#">Item 1</a>
+                </li>
+                <li><a href="#">Item 2</a>
+                </li>
+            </ul>
+        </div>
     </div>
-    <div id="navbar" class="footer">
-        <footer><a href="#padiglioni" class="icon home" style="">Padiglioni</a><a href="#eventi"
-            class="icon chat" style="">Eventi</a><a href="#cerca" class="icon location"
-            style="">Cerca</a><a href="#amici" class="icon user" style="">Amici</a>
-        </footer>
+    <div id="navbar" class="footer"> <a href="#padiglioni" class="icon home">Padiglioni</a><a href="#eventi" class="icon chat">Eventi</a>
+        <a href="#amici" class="icon user">Amici</a><a href="#settings" class="icon settings">Impostazioni</a>
     </div>
 
 
@@ -282,6 +310,14 @@
         <h1 id="pageTitle" class="">Eventi</h1>
         <a class="button icon magnifier" style="visibility: visible; float:right;" onclick="$('div.grid').toggleClass('show');$('form').removeClass('show')"
         data-appbuilder-object="button"></a>
+    </header>
+    <header id="header_4" data-appbuilder-object="header">
+        <h1 class="">Lucca Explorer</h1>
+    </header>
+    <header id="header_5" data-appbuilder-object="header"><a id="backButton" class="backButton">Indietro</a>
+        <h1 class="">Mappa</h1>
+        <a class="button icon magnifier" style="visibility: visible; float:right;" href="#naviga"></a>
+        <a class="button icon location" style="visibility: visible; float:right;"></a>
     </header>
 </div>
 </body>
