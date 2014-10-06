@@ -43,6 +43,7 @@
 </script>
 
 <script type="text/javascript" src="js/geolocation.js"></script>
+<script type="text/javascript" src="js/buttons.js"></script>
 
 <script>
     $.ui.ready(function(){
@@ -52,8 +53,11 @@
         $.ui.loadContent("main",false, false, "slide");
         
         //intel.xdk.geolocation.watchPosition(function(pos){});
-        loadEventi();
-        loadOspiti();
+        //loadEventi();
+        //loadOspiti();
+        //loadLuoghi();
+        loadLists();
+        initHandlers();
         initGeo();
     });
 </script>
@@ -69,6 +73,8 @@
 <script type="text/javascript" src="js/fiera-strings.js"></script>
 <script type="text/javascript" src="js/fiera.js"></script>
 <script type="text/javascript" src="js/fiera-lists.js"></script>
+<script type="text/javascript" src="js/luoghi-lucca.js"></script>
+
 
 <!--style>
     #body{height:600px;width:600px}
@@ -82,11 +88,13 @@
         data-footer="footer_2" data-header="header_4">
 
             <ul class="list inset" data-appbuilder-object="list" style="">
-                <li><a href="#padiglioni">Paglioni</a>
+                <li><a href="#padiglioni">Ospiti/Stand</a>
                 </li>
                 <li><a href="#eventi">Eventi</a>
                 </li>
                 <li><a href="#amici">Amici</a>
+                </li>
+                <li><a href="#mappa">Mappa interattiva</a>
                 </li>
                 <li><a href="#settings">Impostazioni</a>
                 </li>
@@ -250,13 +258,13 @@
                 <div class="text_item" data-appbuilder-object="text">Corpo</div>
             </div>
         </div>
-        <div class="panel" title="Mappa" id="mappa" data-appbuilder-object="page" data-footer="footer_2"
-        style="" selected="selected" data-header="header_5">
+        <div class="panel" title="Mappa" id="mappa" data-appbuilder-object="page" style=""
+        selected="selected" data-header="header_5">
             <div id="body" style=""></div>
 
         </div>
         <div class="panel" title="Naviga verso" id="naviga" data-appbuilder-object="page"
-        style="" data-footer="none">
+        style="" data-footer="footer_2" data-header="header_6">
             <div class="container" style="width:100%" data-appbuilder-object="container">
                 <div class="toggle_element form_element" style="overflow: hidden;" data-appbuilder-object="toggle">
                     <label>Usa mia posizione</label>
@@ -267,31 +275,40 @@
                 <div id="partenza" class="input_element form_element" style="width: 100%; overflow: hidden;"
                 data-appbuilder-object="input">
                     <label for="">Partenza</label>
-                    <input type="text" style="float:left;" id="" placeholder="">
+                    <input type="text" style="float:left;" id="partenza_txt" placeholder="Luogo">
                 </div>
 
 
                 <div class="input_element form_element" style="width:100%;overflow:hidden" data-appbuilder-object="input">
-                    <label for="">Destinazione</label>
-                    <input type="text" style="float:left;" id="" placeholder="">
+                    <label for="destinazione">Destinazione</label>
+                    <input type="text" style="float:left;" id="destinazione" placeholder="Luogo">
+                </div>
+                <div class="select_element form_element" style="width:100%;overflow:hidden" data-appbuilder-object="select">
+                    <label for="tipo">Cosa Cerchi?</label>
+                    <select id="tipo">
+                        <option value="tutto" selected="">Va bene tutto</option>
+                        <option value="cibo">Cibo/Bevande</option>
+                        <option value="strade">Strade</option>
+                        <option value="negozi">Negozi</option>
+                        <option value="bancomat">Bancomat</option>
+                        <option value="farmacia">Farmacia ;)</option>
+                        <option value="parcheggi">Parcheggi</option>
+                    </select>
                 </div>
             </div>
-            <ul class="list inset" data-appbuilder-object="list">
-                <li><a href="#">Item 1</a>
-                </li>
-                <li><a href="#">Item 2</a>
-                </li>
-            </ul>
+            <ul id="naviga_list" class="list inset" data-appbuilder-object="list"></ul>
         </div>
     </div>
-    <div id="navbar" class="footer"> <a href="#padiglioni" class="icon home">Padiglioni</a><a href="#eventi" class="icon chat">Eventi</a>
-        <a href="#amici" class="icon user">Amici</a><a href="#settings" class="icon settings">Impostazioni</a>
+    <div id="navbar" class="footer"> <a href="#padiglioni" class="icon home">Ospiti</a><a href="#eventi" class="icon calendar">Eventi</a>
+        <a href="#amici" class="icon user">Amici</a><a href="#mappa" class="icon location">Mappa</a>
+        <a href="#settings" class="icon settings">Impostazioni</a>
     </div>
 
 
     <footer id="footer_2" data-appbuilder-object="footer"></footer>
-    <footer id="footer_3" data-appbuilder-object="footer"><a href="#padiglioni" class="icon home">Padiglioni</a><a href="#eventi" class="icon chat">Eventi</a>
-        <a href="#amici" class="icon user">Amici</a><a href="#settings" class="icon settings">Impostazioni</a>
+    <footer id="footer_3" data-appbuilder-object="footer"><a href="#padiglioni" class="icon home">Ospiti</a><a href="#eventi" class="icon calendar">Eventi</a>
+        <a href="#amici" class="icon user">Amici</a><a href="#mappa" class="icon location">Mappa</a>
+        <a href="#settings" class="icon settings">Impostazioni</a>
     </footer>
 
     <header id="header_1" data-appbuilder-object="header">
@@ -314,10 +331,13 @@
     <header id="header_4" data-appbuilder-object="header">
         <h1 class="">Lucca Explorer</h1>
     </header>
-    <header id="header_5" data-appbuilder-object="header"><a id="backButton" class="backButton">Indietro</a>
+    <header id="header_5" data-appbuilder-object="header">
         <h1 class="">Mappa</h1>
         <a class="button icon magnifier" style="visibility: visible; float:right;" href="#naviga"></a>
         <a class="button icon location" style="visibility: visible; float:right;"></a>
+    </header>
+    <header id="header_6" data-appbuilder-object="header"><a id="backButton" href="#mappa" class="backButton">Annulla</a>
+        <h1 class="">Naviga verso</h1><a id="naviga_cerca" href="#mappa" class="button" style="float:right">Cerca</a>
     </header>
 </div>
 </body>

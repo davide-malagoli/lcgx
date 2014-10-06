@@ -23,6 +23,14 @@
     display:block;
 }
 
+#naviga #naviga_list>li{
+    display:none;
+}
+
+#naviga #naviga_list>li.show{
+    display:block;
+}
+
 /*html,body,#afui,#content,#mappa {height:100%}*/
 body {font-family:arial;background-color:white}
 #body {height:600px;width:100%}

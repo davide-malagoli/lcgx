@@ -8,7 +8,7 @@
       "src": "appStarter",
       "sourceDirectory": "www",
       "projectGuid": "0c926382-8270-484e-b910-447e3ac31ace",
-      "lastModifiedDate": 1411674747478,
+      "lastModifiedDate": 1411763919467,
       "creationDate": 1409693462486
     },
     "XDK-app-starter": "true",
@@ -35,34 +35,6 @@
     ],
     "cordovaPlugins": [
       {
-        "id": "org.apache.cordova.device-motion",
-        "version": "0.2.4",
-        "selectedState": "Auto",
-        "data": {},
-        "paramvals": {}
-      },
-      {
-        "id": "org.apache.cordova.camera",
-        "version": "0.2.9",
-        "selectedState": "Auto",
-        "data": {},
-        "paramvals": {}
-      },
-      {
-        "id": "org.apache.cordova.media-capture",
-        "version": "0.2.8",
-        "selectedState": "Auto",
-        "data": {},
-        "paramvals": {}
-      },
-      {
-        "id": "org.apache.cordova.device-orientation",
-        "version": "0.3.6",
-        "selectedState": "Auto",
-        "data": {},
-        "paramvals": {}
-      },
-      {
         "id": "org.apache.cordova.network-information",
         "version": "0.2.8",
         "selectedState": "Auto",
@@ -84,20 +56,6 @@
         "paramvals": {}
       },
       {
-        "id": "org.apache.cordova.battery-status",
-        "version": "0.2.5",
-        "selectedState": "Auto",
-        "data": {},
-        "paramvals": {}
-      },
-      {
-        "id": "org.apache.cordova.file",
-        "version": "0.2.5",
-        "selectedState": "Auto",
-        "data": {},
-        "paramvals": {}
-      },
-      {
         "id": "org.apache.cordova.geolocation",
         "version": "0.3.5",
         "selectedState": "Auto",
@@ -107,20 +65,6 @@
       {
         "id": "org.apache.cordova.globalization",
         "version": "0.2.7",
-        "selectedState": "Auto",
-        "data": {},
-        "paramvals": {}
-      },
-      {
-        "id": "org.apache.cordova.inappbrowser",
-        "version": "0.3.0",
-        "selectedState": "Auto",
-        "data": {},
-        "paramvals": {}
-      },
-      {
-        "id": "org.apache.cordova.media",
-        "version": "0.2.8",
         "selectedState": "Auto",
         "data": {},
         "paramvals": {}
@@ -147,19 +91,7 @@
         "paramvals": {}
       },
       {
-        "id": "intel.xdk.audio",
-        "selectedState": "Auto",
-        "data": {},
-        "paramvals": {}
-      },
-      {
         "id": "intel.xdk.cache",
-        "selectedState": "Auto",
-        "data": {},
-        "paramvals": {}
-      },
-      {
-        "id": "intel.xdk.camera",
         "selectedState": "Auto",
         "data": {},
         "paramvals": {}
@@ -175,54 +107,6 @@
         "selectedState": "Auto",
         "data": {},
         "paramvals": {}
-      },
-      {
-        "id": "intel.xdk.file",
-        "selectedState": "Auto",
-        "data": {},
-        "paramvals": {}
-      },
-      {
-        "id": "intel.xdk.player",
-        "selectedState": "Auto",
-        "data": {},
-        "paramvals": {}
-      },
-      {
-        "id": "intel.xdk.notification",
-        "selectedState": "Included",
-        "data": {},
-        "paramvals": {}
-      },
-      {
-        "id": "intel.xdk.geolocation",
-        "selectedState": "Included",
-        "data": {},
-        "paramvals": {}
-      },
-      {
-        "id": "intel.xdk.facebook",
-        "selectedState": "Included",
-        "data": {},
-        "paramvals": {}
-      },
-      {
-        "id": "intel.xdk.display",
-        "selectedState": "Included",
-        "data": {},
-        "paramvals": {}
-      },
-      {
-        "id": "intel.xdk.base",
-        "selectedState": "Included",
-        "data": {},
-        "paramvals": {}
-      },
-      {
-        "id": "intel.xdk.accelerometer",
-        "selectedState": "Included",
-        "data": {},
-        "paramvals": {}
       }
     ],
     "serviceMethods": [],
@@ -231,9 +115,66 @@
         "platform_": "android",
         "runtime_": "Cordova 3.x",
         "name_": "Android",
-        "preferences_": {},
+        "preferences_": {
+          "android-minSdkVersion": "4.1.0",
+          "android-targetSdkVersion": "4.2.2"
+        },
         "isActive_": true,
-        "appName_": "luccaExplorer",
+        "appName_": "Lucca C&G Offline Explorer",
+        "appID_": "it.luccaExplorer",
+        "appAccess_": "*",
+        "icons_": [
+          {
+            "relPath": "images/icons/logo_final_36x36.png",
+            "density": "ldpi",
+            "height": 36,
+            "width": 36
+          },
+          {
+            "relPath": "images/icons/logo_final_48x48.png",
+            "density": "mdpi",
+            "height": 48,
+            "width": 48
+          },
+          {
+            "relPath": "images/icons/logo_final_72x72.png",
+            "density": "hdpi",
+            "height": 72,
+            "width": 72
+          },
+          {
+            "relPath": "images/icons/logo_final_96x96.png",
+            "density": "xhdpi",
+            "height": 96,
+            "width": 96
+          },
+          {
+            "relPath": "logo_final_36x36.png",
+            "density": "ldpi",
+            "height": 36,
+            "width": 36
+          }
+        ],
+        "splashes_": [],
+        "iosProvs_": [],
+        "addlPermissions_": "",
+        "excludedLibraries_": "",
+        "cordovaCLIVersion_": "3.3",
+        "crosswalkVersion_": "stable",
+        "appVersion_": "1.0.0",
+        "appDescription_": "",
+        "appVersionCode_": "1"
+      },
+      "Android-Crosswalk": {
+        "platform_": "android",
+        "runtime_": "Crosswalk with Cordova 3.x",
+        "name_": "Android-Crosswalk",
+        "preferences_": {
+          "android-minSdkVersion": "4.1.0",
+          "android-targetSdkVersion": "4.2.2"
+        },
+        "isActive_": true,
+        "appName_": "Lucca C&G Offline Explorer",
         "appID_": "it.luccaExplorer",
         "appAccess_": "*",
         "icons_": [
@@ -269,59 +210,18 @@
         "cordovaCLIVersion_": "3.3",
         "crosswalkVersion_": "stable",
         "appVersion_": "1.0.0",
-        "appDescription_": ""
-      },
-      "Android-Crosswalk": {
-        "platform_": "android",
-        "runtime_": "Crosswalk with Cordova 3.x",
-        "name_": "Android-Crosswalk",
-        "preferences_": {},
-        "isActive_": true,
-        "appName_": "prova16",
-        "appID_": "not.yet.specified",
-        "appAccess_": "*",
-        "icons_": [
-          {
-            "relPath": "images/icons/logo_final_36x36.png",
-            "density": "ldpi",
-            "height": 36,
-            "width": 36
-          },
-          {
-            "relPath": "images/icons/logo_final_48x48.png",
-            "density": "mdpi",
-            "height": 48,
-            "width": 48
-          },
-          {
-            "relPath": "images/icons/logo_final_72x72.png",
-            "density": "hdpi",
-            "height": 72,
-            "width": 72
-          },
-          {
-            "relPath": "images/icons/logo_final_96x96.png",
-            "density": "xhdpi",
-            "height": 96,
-            "width": 96
-          }
-        ],
-        "splashes_": [],
-        "iosProvs_": [],
-        "addlPermissions_": "",
-        "excludedLibraries_": "",
-        "cordovaCLIVersion_": "3.3",
-        "crosswalkVersion_": "stable",
-        "appVersion_": "1.0.0"
+        "appVersionCode_": "1"
       },
       "iOS": {
         "platform_": "ios",
         "runtime_": "Cordova 3.x",
         "name_": "iOS",
-        "preferences_": {},
+        "preferences_": {
+          "ios-configuration": "production"
+        },
         "isActive_": true,
-        "appName_": "prova16",
-        "appID_": "not.yet.specified",
+        "appName_": "Lucca C&G Offline Explorer",
+        "appID_": "it.luccaExplorer",
         "appAccess_": "*",
         "icons_": [
           {
@@ -359,8 +259,8 @@
         "name_": "Windows8",
         "preferences_": {},
         "isActive_": true,
-        "appName_": "prova16",
-        "appID_": "not.yet.specified",
+        "appName_": "Lucca C&G Offline Explorer",
+        "appID_": "it.luccaExplorer",
         "appAccess_": "*",
         "icons_": [],
         "splashes_": [],
