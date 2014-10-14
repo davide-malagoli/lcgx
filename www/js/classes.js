@@ -6450,6 +6450,7 @@ function cgt_GraphHopperUI$1845_$clinit() {
     cgt_GraphHopperUI$1845_$clinit = function(){};
     cgt_GraphHopperUI$1845_$init847 = function($this, a) {
         $this.this$0846 = a;
+        //window.graphopperUI.this$0846 = a;
         jl_Object7_$init11($this);
         return;
     }
@@ -9090,6 +9091,7 @@ function cgt_GraphHopperUI849_$clinit() {
         c = $this.map1175;
         b = $rt_s(148);
         a = cgt_GraphHopperUI$1845.$init847($this);
+        window.graphopperUI=a;
         c.on(otj_JS1084_wrap1086(b), (function($instance, $property) { return function() {
             return $property.apply($instance, arguments);
         };})(a, a.occur));

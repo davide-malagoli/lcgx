@@ -1,4 +1,5 @@
 var lastInput;
+var srcActive=false;
 
 function hideShowNavigaListDest(){
     lastInput="dest";
@@ -33,5 +34,16 @@ function changeValue(text){
         $('#destinazione').val(text);
  
     }
+    
+    if(srcActive){
+        checkSearchButtonSrc($('#partenza_txt').val(),$('#destinazione').val());
+    }else{
+        checkSearchButton($('#destinazione').val());
+    }
+}
+
+function toggleSrc(){
+    srcActive=!srcActive;
+    $('#partenza').toggleClass('show');
 }
 
